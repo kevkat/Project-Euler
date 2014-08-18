@@ -2,7 +2,6 @@
 #include <string>
 #include <unordered_map>
 
-
 using namespace std;
 using std::stringstream;
 using std::string;
@@ -25,7 +24,7 @@ bool is_palindrome(string n) {
 
 int find_palindromes(int rangemin, int rangemax) {
 	int palindromes[10000];
-	for (int x; )
+	for (const auto &x : )
 }
 
 int main (void) {
