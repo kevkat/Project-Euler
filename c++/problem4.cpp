@@ -1,36 +1,49 @@
 #include <iostream>
-#include <string>
-#include <unordered_map>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-using std::stringstream;
-using std::string;
 
-bool is_palindrome(string n) {
-	
-	int num = 0;
-	for (int i = 0; i < n.length(); i++) {
-		num *= 10;
-		num += n[i] - '0';
-	}
+int palindromecheck(int n);
 
-	int num2 = 0;
-	for (int i = n.length() - 1; i >= 0; i--) {
-		num2 *= 10;
-		num2 += n[i] - '0';
-	}
-	return (num == num2) ? true : false;
+// rewritten to avoid using strings, seems to be more efficient and avoids the inelegance of string manipulation in c++ 
+int palindromecheck(int n) {
+    int m,sum=0,temp,check;
+    temp=n;
+    while(n){
+        m=n%10;
+        n=n/10;
+        sum=sum*10+m;
+    }
+
+    if(temp==sum)
+    check=1;
+    else
+    check=0;
+    return check;
 }
 
-int find_palindromes(int rangemin, int rangemax) {
-	int palindromes[10000];
-	for (const auto &x : )
+int main() {
+    vector<int> palindromes;
+    int num=0; int count=0;
+    for(int i=1;i<=999;i++){
+        for(int j=1;j<=999;j++){
+            num=i*j;
+        if(palindromecheck(num)){
+            palindromes.push_back(count); 
+            palindromes[count]=num;
+            count+=1;
+        }
+
+        }
+    }
+
+	cout << "Number of palindromes before sort: " <<  palindromes.size() << endl; //test print
+	sort(palindromes.begin(),palindromes.end()); 
+	palindromes.erase(unique(palindromes.begin(),palindromes.end()),palindromes.end());
+	cout << "Number of palindromes deduped and sorted: " << palindromes.size() << endl; //test print
+	cout << "Greatest palindrome: " <<*( max_element( palindromes.begin(), palindromes.end() ) ) << endl;
+
 }
 
-int main (void) {
-	if (is_palindrome("1011")) {
-		cout << "True!" << endl;
-	} else {
-		cout << "False." << endl;
-	}
-}
+
