@@ -11,7 +11,7 @@ def is_prime(num):
 def main(argv):
 
 	if (len(sys.argv) != 3):
-		sys.exit('Usage: problem10.py <lowest_bound> <upper_bound>')
+		sys.exit('Usage: problem10.py <lower_bound> <upper_bound>')
 
 	low = int(sys.argv[1])
 	high = int(sys.argv[2])
